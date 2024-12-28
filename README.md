@@ -1,8 +1,8 @@
-# Online Booking NextJs Template: avo
+# Avo Online Booking System: avo
 
 Welcome to **avo**, a responsive Nextjs template theme tailored for Online booking, Listing, Real Estate, and booking systems. Whether you're running an accommodation service, travel experience, cruise, car rental, real estate, or a travel agency, avo has got you covered.
 
-![avo Banner](https://i.ibb.co/JqPfydC/b-landing.png) 
+![avo Banner]() 
 
 ## 🌟 Features
 
@@ -39,4 +39,5 @@ A big shoutout to all the libraries, plugins, and assets that made this project 
 
 ---
 
-Crafted with ❤️ by [Hamed Hasan](https://github.com/Hamed-Hasan). Connect with me on [LinkedIn](https://www.linkedin.com/in/hamed-hasan).
+Crafted with ❤️ by [Hamed Hasan](https://github.com/alert90). Connect with me on [X](https://www.x.com/ennexica).
+
