@@ -39,5 +39,5 @@ A big shoutout to all the libraries, plugins, and assets that made this project 
 
 ---
 
-Crafted with ❤️ by [Hamed Hasan](https://github.com/alert90). Connect with me on [X](https://www.x.com/ennexica).
+Crafted with ❤️ by [Nicky](https://github.com/alert90). Connect with me on [X](https://www.x.com/ennexica).
 
