@@ -2,15 +2,26 @@
 
 import {
   HeartIcon,
-  MagnifyingGlassIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
+import avoLogo from "@/images/avo.png";
+import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { PathName } from "@/routers/types";
 import MenuBar from "@/shared/MenuBar";
 import isInViewport from "@/utils/isInViewport";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+const LogoIcon = () => (
+  <Image
+    src={avoLogo}
+    alt="Logo"
+    width={40}      // same as Heroicons
+    height={40}
+    className="object-contain"
+  />
+);
 
 let WIN_PREV_POSITION = 0;
 if (typeof window !== "undefined") {
@@ -25,9 +36,9 @@ interface NavItem {
 
 const NAV: NavItem[] = [
   {
-    name: "Explore",
+    name: "",
     link: "/",
-    icon: MagnifyingGlassIcon,
+    icon: LogoIcon,
   },
   {
     name: "Wishlists",

@@ -11,38 +11,14 @@ export const headerLanguage = [
   {
     id: "English",
     name: "English",
-    description: "United State",
+    description: "United States",
     href: "##",
     active: true,
   },
   {
-    id: "Vietnamese",
-    name: "Vietnamese",
-    description: "Vietnamese",
-    href: "##",
-  },
-  {
-    id: "Francais",
-    name: "Francais",
-    description: "Belgique",
-    href: "##",
-  },
-  {
-    id: "Francais",
-    name: "Francais",
-    description: "Canada",
-    href: "##",
-  },
-  {
-    id: "Francais",
-    name: "Francais",
-    description: "Belgique",
-    href: "##",
-  },
-  {
-    id: "Francais",
-    name: "Francais",
-    description: "Canada",
+    id: "Swahili",
+    name: "Swahili",
+    description: "Tanzania",
     href: "##",
   },
 ];

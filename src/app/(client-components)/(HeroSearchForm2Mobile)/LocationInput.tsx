@@ -96,11 +96,11 @@ const LocationInput: FC<Props> = ({
             : renderSearchValues({
                 heading: "Popular destinations",
                 items: [
-                  "Australia",
-                  "Canada",
-                  "Germany",
-                  "United Kingdom",
-                  "United Arab Emirates",
+                  "Zanzibar",
+                  "Dar Es Salaam",
+                  "Kilimanjaro",
+                  "Arusha",
+                  "Morogoro",
                 ],
               })}
         </div>

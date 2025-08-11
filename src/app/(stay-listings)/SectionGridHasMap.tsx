@@ -10,20 +10,77 @@ import Pagination from "@/shared/Pagination";
 import TabFilters from "./TabFilters";
 import Heading2 from "@/shared/Heading2";
 import StayCard2 from "@/components/StayCard2";
+import { useSearchParams } from "next/navigation";
 
 const DEMO_STAYS = DEMO_STAY_LISTINGS.filter((_, i) => i < 12);
+
+interface LocationData {
+  id: number;
+  title: string;
+  map_lat: string;  // from API as string
+  map_lng: string;
+  map_zoom: number;
+}
+
 export interface SectionGridHasMapProps {}
 
 const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
   const [currentHoverID, setCurrentHoverID] = useState<string | number>(-1);
   const [showFullMapFixed, setShowFullMapFixed] = useState(false);
 
+  const searchParams = useSearchParams();
+  const locationId = searchParams.get("location");
+
+  const [locationData, setLocationData] = useState<LocationData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!locationId) {
+      setLocationData(null);
+      setLoading(false);
+      return;
+    }
+
+    const fetchLocation = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`https://avoguide.com/api/location/${locationId}`);
+        const json = await res.json();
+        setLocationData(json.data);
+      } catch (error) {
+        console.error("Error fetching location:", error);
+        setLocationData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLocation();
+  }, [locationId]);
+
+  // Default center and zoom fallback
+  const defaultCenter = locationData
+    ? {
+        lat: parseFloat(locationData.map_lat),
+        lng: parseFloat(locationData.map_lng),
+      }
+    : DEMO_STAYS[0].map;
+
+  const defaultZoom = locationData ? locationData.map_zoom : 12;
+
+  // Location title fallback for heading
+  const locationName = locationData ? locationData.title : "All Locations";
+
+  if (loading) {
+    return <p className="text-center py-10">Loading location details...</p>;
+  }
+
   return (
     <div>
       <div className="relative flex min-h-screen">
-        {/* CARDSSSS */}
+        {/* CARDS */}
         <div className="min-h-screen w-full xl:w-[60%] 2xl:w-[60%] max-w-[1184px] flex-shrink-0 xl:px-8 ">
-          <Heading2 className="!mb-8" />
+          <Heading2 className="!mb-8" name={locationName} />
           <div className="mb-8 lg:mb-11">
             <TabFilters />
           </div>
@@ -31,8 +88,8 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
             {DEMO_STAYS.map((item) => (
               <div
                 key={item.id}
-                onMouseEnter={() => setCurrentHoverID((_) => item.id)}
-                onMouseLeave={() => setCurrentHoverID((_) => -1)}
+                onMouseEnter={() => setCurrentHoverID(item.id)}
+                onMouseLeave={() => setCurrentHoverID(-1)}
               >
                 <StayCard2 data={item} />
               </div>
@@ -45,7 +102,7 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
 
         {!showFullMapFixed && (
           <div
-            className={`flex xl:hidden items-center justify-center fixed bottom-16 md:bottom-8 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-neutral-900 text-white shadow-2xl rounded-full z-30  space-x-3 text-sm cursor-pointer`}
+            className="flex xl:hidden items-center justify-center fixed bottom-16 md:bottom-8 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-neutral-900 text-white shadow-2xl rounded-full z-30 space-x-3 text-sm cursor-pointer"
             onClick={() => setShowFullMapFixed(true)}
           >
             <i className="text-lg las la-map"></i>
@@ -53,7 +110,7 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
           </div>
         )}
 
-        {/* MAPPPPP */}
+        {/* MAP */}
         <div
           className={`xl:flex-1 xl:static xl:block ${
             showFullMapFixed ? "fixed inset-0 z-50" : "hidden"
@@ -75,8 +132,8 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
               />
             </div>
             <GoogleMapReact
-              defaultZoom={12}
-              defaultCenter={DEMO_STAYS[0].map}
+              defaultZoom={defaultZoom}
+              defaultCenter={defaultCenter}
               bootstrapURLKeys={{
                 key: "AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY",
               }}

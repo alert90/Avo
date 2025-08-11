@@ -2,19 +2,21 @@ import React from "react";
 import { ReactNode } from "react";
 
 export interface Heading2Props {
-  heading?: ReactNode;
-  subHeading?: ReactNode;
+  name?: string; // location name
+  heading?: React.ReactNode;
+  subHeading?: React.ReactNode;
   className?: string;
 }
 
 const Heading2: React.FC<Heading2Props> = ({
   className = "",
-  heading = "Stays in Tokyo",
+  name = "TZ",
+  heading,
   subHeading,
 }) => {
   return (
     <div className={`mb-12 lg:mb-16 ${className}`}>
-      <h2 className="text-4xl font-semibold">{heading}</h2>
+      <h2 className="text-4xl font-semibold">{heading || `Stays in ${name}`}</h2>
       {subHeading ? (
         subHeading
       ) : (

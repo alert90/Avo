@@ -11,7 +11,7 @@ import SectionGridFeaturePlaces from "@/components/SectionGridFeaturePlaces";
 
 const DEMO_CATS_2: TaxonomyType[] = [
   {
-    id: "1",
+    id: "1", 
     href: "/listing-stay",
     name: "Enjoy the great cold",
     taxonomy: "category",

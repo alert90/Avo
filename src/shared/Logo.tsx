@@ -1,8 +1,6 @@
 import React from "react";
-import logoImg from "@/images/logo.png";
-import logoLightImg from "@/images/logo-light.png";
-import LogoSvgLight from "./LogoSvgLight";
-import LogoSvg from "./LogoSvg";
+import logoImg from "@/images/avolight.png";
+import logoLightImg from "@/images/avodark.png";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
 
@@ -22,15 +20,11 @@ const Logo: React.FC<LogoProps> = ({
       href="/"
       className={`ttnc-logo inline-block text-primary-6000 focus:outline-none focus:ring-0 ${className}`}
     >
-      <LogoSvgLight />
-      <LogoSvg />
-
-      {/* THIS USE FOR MY CLIENT */}
-      {/* PLEASE UN COMMENT BELLOW CODE AND USE IT */}
-      {/* {img ? (
+      {/* My logo */}
+      {img ? (
         <img
           className={`block max-h-12 ${imgLight ? "dark:hidden" : ""}`}
-          src={img}
+          src={img.src}
           alt="Logo"
         />
       ) : (
@@ -39,10 +33,10 @@ const Logo: React.FC<LogoProps> = ({
       {imgLight && (
         <img
           className="hidden max-h-12 dark:block"
-          src={imgLight}
+          src={imgLight.src}
           alt="Logo-Light"
         />
-      )} */}
+      )}
     </Link>
   );
 };

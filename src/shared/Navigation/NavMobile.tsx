@@ -15,7 +15,7 @@ import LangDropdown from "@/app/(client-components)/(Header)/LangDropdown";
 
 export interface NavMobileProps {
   data?: NavItemType[];
-  onClickClose?: () => void;
+  onClickClose?: () => void; 
 }
 
 const NavMobile: React.FC<NavMobileProps> = ({
@@ -109,9 +109,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
         <Logo />
         <div className="flex flex-col mt-5 text-neutral-700 dark:text-neutral-300 text-sm">
           <span>
-            Discover the most outstanding articles on all topics of life. Write
-            your stories and share them
-          </span>
+Experience Tanzania authentically — seamless bookings for stays, transport, and tours crafted just for you.          </span>
 
           <div className="flex justify-between items-center mt-4">
             <SocialsList itemClass="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 text-xl dark:bg-neutral-800 dark:text-neutral-300" />
@@ -134,7 +132,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          <ButtonPrimary>Get Template</ButtonPrimary>
+          <ButtonPrimary>Download</ButtonPrimary>
         </a>
 
         <LangDropdown
